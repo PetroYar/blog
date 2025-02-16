@@ -1,0 +1,48 @@
+@import "/src/style.scss";
+
+.header {
+  background: $bgHeader;
+  @include adaptiveValue("padding-top", 30, 10);
+  @include adaptiveValue("padding-bottom", 30, 10);
+  @include sectionMargin();
+ 
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    background: white;
+    border-radius: 10%;
+    width: 60px;
+    img {
+      width: 100%;
+    }
+  }
+  &__welcome{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: capitalize;
+  }
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  &__list {
+    display: flex;
+    @include adaptiveValue("gap", 30, 20);
+    justify-content: center;
+    @include adaptiveValue("font-size", 18, 16);
+  }
+
+  &__item {
+    text-transform: capitalize;
+
+    .active {
+      transition: color 0.3s;
+
+      color: $blackTeamText;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+
+
+$minWidth: 320;
+
+$maxWidth: 1800;
+
+$maxWidthContainer: 1200;
+
+$containerPadding: 30;
+
+$bgMain: cadetblue;
+$bgHeader: lightblue;
+$lightTeamText: black;
+$blackTeamText: whitesmoke;
+$hover: $blackTeamText;
+
+
+[class*="__container"] {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+}

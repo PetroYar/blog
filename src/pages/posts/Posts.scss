@@ -1,0 +1,52 @@
+@import "/src/style.scss";
+
+.posts {
+}
+.nav-posts {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: toRem(30);
+  background: $bgHeader;
+  border-radius: 0 0 toRem(20) toRem(20);
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(10);
+    align-items: center;
+  }
+
+  &__item {
+    @include adaptiveValue("font-size",22 ,18 );
+    text-transform: capitalize;
+    transition: color 0.5s;
+    &:hover{
+      color: $hover ;
+    }
+  }
+}
+.posts {
+
+		&__list {
+      display: flex;
+      flex-direction: column;
+      gap: toRem(30);
+		}
+
+		&__item {
+      display: flex;
+      flex-direction: column;
+      gap: toRem(10);
+		}
+}
+.posts-item {
+
+		&__title {
+      @include adaptiveValue("font-size",22 ,18 );
+      text-align: center;
+		}
+
+		&__description {
+      text-align: center;
+		}
+}

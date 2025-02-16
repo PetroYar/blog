@@ -1,0 +1,25 @@
+@import "/src/style.scss";
+
+.input{
+  display: flex;
+  flex-direction: column;
+  gap: toRem(10);
+  position: relative;
+  label{
+    text-transform: capitalize;
+  }
+  input{
+    position: relative;
+    padding: toRem(5);
+  }
+  
+}
+.error{
+  font-size: 16px;
+  color: red;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  letter-spacing: 1px;
+  max-width: 100%;
+}

@@ -1,0 +1,15 @@
+@import "/src/style.scss";
+
+
+.add-post{
+@include paddingBottom();
+  &__title{
+    text-align: center;
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+  }
+}

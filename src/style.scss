@@ -1,0 +1,10 @@
+@import "./assets/scss/null.scss";
+@import "./assets/scss/variable.scss";
+@import "./assets/scss/mixin.scss";
+
+
+
+
+.h1-title{
+  @include adaptiveValue("font-size",30 ,22 );
+}

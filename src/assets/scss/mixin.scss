@@ -1,0 +1,115 @@
+@use "sass:math";
+@import "./variable.scss";
+@import "../scss/variable.scss";
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+@function em($px, $current: 16) {
+  $result: math.div($px, $current) + em;
+  @return $result;
+}
+
+$pc: em($containerWidth);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$mobileSmall: em(540);
+
+@function toRem($num1, $num2: 16) {
+  $rez: math.div($num1, $num2) + rem;
+  @return $rez;
+}
+@function toEm($num1, $num2: 16) {
+  $rez: math.div($num1, $num2) + em;
+  @return $rez;
+}
+
+@mixin adaptiveValue(
+  $property,
+  $startSize,
+  $minSize,
+  $keepSize: 0,
+  $widthFrom: $containerWidth,
+  $widthTo: $minWidth
+) {
+  @if ($startSize==0) {
+    $startSize: 0.000001;
+  }
+  @if ($minSize==0) {
+    $minSize: 0.000001;
+  }
+
+  $addSize: math.div($startSize - $minSize, 16);
+
+  @if ($widthFrom == $containerWidth and $maxWidthContainer == 0) {
+    $widthFrom: $maxWidth;
+  }
+
+  $widthFromMedia: toEm($widthFrom);
+  $widthToMedia: toEm($widthTo);
+
+  $slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+  $yIntersection: -$widthTo * $slope + $minSize;
+  @if ($yIntersection==0) {
+    $yIntersection: 0.000001;
+  }
+  $flyValue: #{toRem($yIntersection)}" + " #{$slope * 100}vw;
+
+  $propertyValue: #{"clamp(" toRem($minSize) "," $flyValue "," toRem($startSize)
+    ")"};
+  @if ($minSize > $startSize) {
+    $propertyValue: #{"clamp("
+      toRem($startSize)
+      ","
+      $flyValue
+      ","
+      toRem($minSize)
+      ")"};
+  }
+
+  @if $keepSize != 1 and $keepSize != 3 {
+    @media (min-width: $widthFromMedia) {
+      #{$property}: toRem($startSize);
+    }
+  }
+  @media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+    @supports (#{$property}: $propertyValue) {
+      #{$property}: $propertyValue;
+    }
+    @supports not (#{$property}: $propertyValue) {
+      #{$property}: calc(
+        #{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div(
+            $widthFrom,
+            16
+          ) - math.div($widthTo, 16)}
+      );
+    }
+  }
+  @if $keepSize != 1 and $keepSize != 2 {
+    @media (max-width: $widthToMedia) {
+      #{$property}: toRem($minSize);
+    }
+  }
+}
+
+@mixin absoluteCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin sectionMargin() {
+  @include adaptiveValue("margin-bottom", 70, 30);
+}
+@mixin paddingBottom() {
+  @include adaptiveValue("padding-bottom", 70, 30);
+}
+
+@mixin flexCenter($row: false) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @if $row {
+    flex-direction: column;
+  }
+}

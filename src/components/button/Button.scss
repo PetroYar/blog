@@ -1,0 +1,11 @@
+@import "/src/style.scss";
+
+.button {
+  padding: toRem(10) toRem(20);
+  background: $blackTeamText;
+  text-transform: uppercase;
+  transition: opacity 0.5s;
+  &:hover {
+    opacity: 0.8;
+  }
+}
