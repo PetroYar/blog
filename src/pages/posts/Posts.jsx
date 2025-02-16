@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getData } from "../../../libs/services";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { formatDate } from "../../../libs/formatDate";
+import { useAuth } from "../../../hooks/useAuth";
+import { FaEdit, FaTrash } from "react-icons/fa";
 const Posts = () => {
+  const { user } = useAuth();
   const [data, setData] = useState({
     posts: [],
     currentPage: 1,
@@ -11,12 +15,14 @@ const Posts = () => {
     nextPage: null,
     prevPage: null,
   });
+
   const _limit = 3;
 
   const fetchPosts = async (page = 1) => {
     const response = await getData(
       `/posts?_limit=${_limit}&_start=${(page - 1) * _limit}`
     );
+    console.log(response);
     setData({
       posts: response.posts,
       currentPage: response.currentPage,
@@ -61,8 +67,31 @@ const Posts = () => {
             {data?.posts.map((post) => {
               return (
                 <li className="posts__item posts-item" key={post._id}>
-                  <h4 className="posts-item__title">{post.title}</h4>
-                  <p className="posts-item__description">{post.description}</p>
+                  <Link to={`/post/${post._id}`}>
+                    <h4 className="posts-item__title">{post.title}</h4>
+                  </Link>
+                  <span> Автор</span>
+                  <Link
+                    className="posts-item__user-name"
+                    to={`/${post.user._id}`}
+                  >
+                    {post.user.username}
+                  </Link>
+                  {formatDate(post.createdAt)}
+                  {post.userId === user._id && (
+                    <div className="posts-item__option option">
+                      <Link
+                        className="option__edit"
+                        to={`/post/id=${post._id}`}
+                      >
+                        <FaEdit />
+                      </Link>
+
+                      <button className="option__delete">
+                        <FaTrash />
+                      </button>
+                    </div>
+                  )}
                 </li>
               );
             })}

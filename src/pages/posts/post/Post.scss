@@ -1,1 +1,34 @@
 @import "/src/style.scss";
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(20);
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__img {
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__comments {
+  }
+}
+
+.comments-post {
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  button {
+
+    margin: toRem(30) auto;
+    display: flex;
+  }
+}

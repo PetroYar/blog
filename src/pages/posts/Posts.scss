@@ -31,22 +31,37 @@
       display: flex;
       flex-direction: column;
       gap: toRem(30);
+      margin-bottom: toRem(20);
 		}
 
 		&__item {
       display: flex;
       flex-direction: column;
       gap: toRem(10);
+      background: $bgHeader;
+      padding: toRem(30)toRem(20);
+     
 		}
 }
 .posts-item {
-
+position: relative;
 		&__title {
       @include adaptiveValue("font-size",22 ,18 );
       text-align: center;
 		}
 
-		&__description {
-      text-align: center;
-		}
+		&__user-name{
+      width: max-content;
+      background: $blackTeamText;
+      padding: toRem(10);
+    }
+    &__option{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      gap: 15px;
+      padding: 5px;
+    }
 }
+

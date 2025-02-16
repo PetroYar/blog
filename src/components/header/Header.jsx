@@ -1,14 +1,13 @@
 import { useAuth } from "../../../hooks/useAuth";
 import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 import Button from "../button/Button";
 
 const Header = (props) => {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  
 
   return (
     <header className="header">
