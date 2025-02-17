@@ -28,6 +28,7 @@ const Post = () => {
         <span>loading..</span>
       ) : (
         <div className="post">
+          <span>{post.user.username}</span>
           <h1 className="post__title h1-title">{post.title}</h1>
           <div className="post__img">{post?.img}</div>
           <p className="post__description">{post.description}</p>
