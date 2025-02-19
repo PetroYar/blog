@@ -1,4 +1,4 @@
-@import "/src/style.scss";
+@use "/src/style.scss" as  *;
 
 .button {
   padding: toRem(10) toRem(20);
