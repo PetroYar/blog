@@ -1,7 +1,7 @@
-@import "/src/style.scss";
+@use "/src/style.scss" as *;
 
 .auth-form {
-  background: $bgHeader;
+  // background: $bgHeader;
   display: flex;
   flex-direction: column;
   width: toRem(400);
@@ -18,9 +18,9 @@
   }
 
   &__link {
-    color: $blackTeamText;
+    // color: $blackTeamText;
     &:hover {
-      color: $lightTeamText;
+      // color: $lightTeamText;
     }
   }
 &__input-wrapper {

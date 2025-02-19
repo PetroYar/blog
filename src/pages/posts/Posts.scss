@@ -1,62 +1,58 @@
-@import "/src/style.scss";
+@use "/src/style.scss" as *;
 
 .posts {
 }
 .nav-posts {
-max-width: max-content;
+  max-width: max-content;
   padding: toRem(30);
-  background: $bgHeader;
+  // background: $bgHeader;
   border-radius: 0 0 toRem(20) toRem(20);
-  @include sectionMargin();
+  // @include sectionMargin();
   &__list {
     display: flex;
-    
+
     gap: toRem(10);
     align-items: center;
   }
 
   &__item {
-    @include adaptiveValue("font-size",22 ,18 );
+    // @include adaptiveValue("font-size",22 ,18 );
     text-transform: capitalize;
     transition: color 0.5s;
-    &:hover{
-      color: $hover ;
+    &:hover {
+      // color: $hover ;
     }
   }
 }
 .posts {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(30);
+    margin-bottom: toRem(20);
+  }
 
-		&__list {
-      display: flex;
-      flex-direction: column;
-      gap: toRem(30);
-      margin-bottom: toRem(20);
-		}
-
-		&__item {
-      display: flex;
-      flex-direction: column;
-      gap: toRem(10);
-      background: $bgHeader;
-      padding: toRem(30)toRem(20);
-     
-		}
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(10);
+    // background: $bgHeader;
+    padding: toRem(30) toRem(20);
+  }
 }
 .posts-item {
-position: relative;
-		&__title {
-      @include adaptiveValue("font-size",22 ,18 );
-      text-align: center;
-   
-      background: $blackTeamText;
-      padding: toRem(10);
-		}
+  position: relative;
+  &__title {
+    // @include adaptiveValue("font-size",22 ,18 );
+    text-align: center;
 
-		&__user-name{
-      width: max-content;
-      background: $blackTeamText;
-      padding: toRem(10);
-    }
+    // background: $blackTeamText;
+    padding: toRem(10);
+  }
 
+  &__user-name {
+    width: max-content;
+    // background: $blackTeamText;
+    padding: toRem(10);
+  }
 }
-

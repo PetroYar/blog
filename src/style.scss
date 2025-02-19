@@ -1,6 +1,7 @@
-@import "./assets/scss/null.scss";
-@import "./assets/scss/variable.scss";
-@import "./assets/scss/mixin.scss";
+@use "./assets/scss/variable" as *;
+@use "./assets/scss/null.scss" as *;
+
+@use "./assets/scss/mixin.scss" as *;
 
 .h1-title {
   @include adaptiveValue("font-size", 35, 24);
@@ -17,21 +18,19 @@
   display: flex;
   padding: 5px;
   align-items: center;
-  
 
   &__delete {
   }
   &__edit {
   }
 }
-.like{
+.like {
   position: absolute;
   bottom: toRem(5);
   right: toRem(5);
- 
 }
-.avtor{
+.avtor {
   width: max-content;
-      background: $blackTeamText;
-      padding: toRem(10)
+  background: $blackTeamText;
+  padding: toRem(10);
 }

@@ -5,7 +5,7 @@ import { deleteData, getData, updateData } from "../../../libs/services";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { formatDate } from "../../../libs/formatDate";
 import { useAuth } from "../../../hooks/useAuth";
-import { FaEdit, FaTrash, FaHeart } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Author from "../../components/author/Author";
 import Like from "../../components/like/Like";
 import Loading from "../../components/loading/Loading";
@@ -15,15 +15,14 @@ const Posts = () => {
     posts: [],
   });
 
-  const _limit = 5;
+  const _limit = 2;
 
   const fetchPosts = async (page = 1) => {
-    const response = await getData(
+    const data = await getData(
       `/posts?_limit=${_limit}&_start=${(page - 1) * _limit}`
     );
 
-    setData(response);
-    console.log(response)
+    setData(data);
   };
 
   useEffect(() => {
@@ -32,6 +31,8 @@ const Posts = () => {
 
   const handlePrevPage = () => {
     if (data.prevPage) {
+      fetchPosts(data.prevPage);
+
     }
   };
 
@@ -54,11 +55,10 @@ const Posts = () => {
     }
   };
   const toggleLikesPost = (id) => {
-    console.log(id)
     try {
       updateData(`/posts/like/${id}`)
         .then((res) => {
-          console.log(res);
+        
           setData((prevData) => ({
             ...prevData,
             posts: prevData.posts.map((post) =>

@@ -1,4 +1,4 @@
-@import "/src/style.scss";
+@use "/src/style.scss" as *;
 
 .post {
   display: flex;
@@ -45,7 +45,7 @@ margin-bottom: toRem(30);
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-    background: $bgHeader;
+  // background: $bgHeader;
     padding: toRem(30) toRem(20);
   }
   

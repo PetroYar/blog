@@ -12,7 +12,7 @@ const AddPost = () => {
   const [validateDescription, setValidateDescription] = useState("");
   const navigate = useNavigate();
 
-  const submitPost = async (e) => {
+  const createPost = async (e) => {
     e.preventDefault();
     if (title.length < 5 || title.length > 80) {
       setValidateTitle(
@@ -22,7 +22,9 @@ const AddPost = () => {
     }
     setValidateTitle("");
     if (description.length < 20 || description.length > 15000) {
-      setValidateDescription("Текст повинен бути не менше 20 і не більше 15000 символів ");
+      setValidateDescription(
+        "Текст повинен бути не менше 20 і не більше 15000 символів "
+      );
       return;
     }
     try {
@@ -33,7 +35,6 @@ const AddPost = () => {
 
       postData("/posts", newPost)
         .then((res) => {
-          console.log(res);
           navigate("/posts");
         })
         .catch((error) => {
@@ -49,7 +50,7 @@ const AddPost = () => {
     <div className="add-post">
       <h1 className="add-post__title h1-title">Додати пост</h1>
 
-      <form onSubmit={submitPost} className="add-post__form">
+      <form onSubmit={createPost} className="add-post__form">
         <Input
           type="text"
           label="Заголовок"

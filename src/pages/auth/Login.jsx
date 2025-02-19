@@ -11,16 +11,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-const {authUser} = useAuth()
+  const { authUser } = useAuth();
 
-  const handleLogin =  (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (password.length > 5) {
       const user = {
         password: password,
         email: email,
       };
-       authUser(user)
+      authUser(user);
     }
   };
 

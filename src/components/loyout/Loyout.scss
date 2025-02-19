@@ -1,7 +1,6 @@
-@import "/src/style.scss";
+@use "/src/style.scss" as *;
 
 .loyout {
-  background: $bgMain;
+  // background: $bgMain;
   min-height: 100vh;
-  
 }

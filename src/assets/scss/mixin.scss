@@ -1,6 +1,6 @@
 @use "sass:math";
-@import "./variable.scss";
-@import "../scss/variable.scss";
+@use "./variable.scss" as *;
+
 
 $containerWidth: $maxWidthContainer + $containerPadding;
 @function em($px, $current: 16) {

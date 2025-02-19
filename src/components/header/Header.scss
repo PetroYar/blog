@@ -1,9 +1,9 @@
 @import "/src/style.scss";
 
 .header {
-  background: $bgHeader;
-  @include adaptiveValue("padding-top", 30, 10);
-  @include adaptiveValue("padding-bottom", 30, 10);
+  // background: $bgHeader;
+  // @include adaptiveValue("padding-top", 30, 10);
+  // @include adaptiveValue("padding-bottom", 30, 10);
   // @include sectionMargin();
  
   &__container {
@@ -32,8 +32,8 @@
   &__list {
     display: flex;
     justify-content: center;
-    @include adaptiveValue("gap", 30, 20);
-    @include adaptiveValue("font-size", 18, 16);
+    // @include adaptiveValue("gap", 30, 20);
+    // @include adaptiveValue("font-size", 18, 16);
   }
 
   &__item {
@@ -42,7 +42,7 @@
     .active {
       transition: color 0.3s;
 
-      color: $blackTeamText;
+      // color: $blackTeamText;
     }
   }
 }
