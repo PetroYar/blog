@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Button from "../../../components/button/Button";
-import Input from "../../../components/input/Input";
+import Button from "../../components/button/Button";
+import Input from "../../components/input/Input";
 import "./AddPost.scss";
-import { postData } from "../../../../libs/services";
+import { postData } from "../../../libs/services";
 import { useNavigate } from "react-router-dom";
-
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
@@ -15,17 +14,15 @@ const AddPost = () => {
 
   const submitPost = async (e) => {
     e.preventDefault();
-    if (title.length < 5 || title.length > 20) {
+    if (title.length < 5 || title.length > 80) {
       setValidateTitle(
-        "Заголовок повинен бути не менше 5  і не більше 20 символів"
+        "Заголовок повинен бути не менше 5  і не більше 80 символів"
       );
       return;
     }
     setValidateTitle("");
-    if (description.length < 20 || description.length > 300) {
-      setValidateDescription(
-        "Текст повинен бути не менше 20 і не більше 300 символів"
-      );
+    if (description.length < 20 || description.length > 15000) {
+      setValidateDescription("Текст повинен бути не менше 20 і не більше 15000 символів ");
       return;
     }
     try {
@@ -34,9 +31,16 @@ const AddPost = () => {
         description,
       };
 
-      const createPost = await postData("/posts", newPost, localStorage.getItem("token"));
-      navigate('/posts')
-      console.log(createPost)
+      postData("/posts", newPost)
+        .then((res) => {
+          console.log(res);
+          navigate("/posts");
+        })
+        .catch((error) => {
+          if (error.status === 401) {
+            navigate("/login");
+          }
+        });
     } catch (error) {
       console.error(error);
     }

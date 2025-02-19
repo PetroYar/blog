@@ -2,12 +2,10 @@ import { useAuth } from "../../../hooks/useAuth";
 import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
 
-
 import Button from "../button/Button";
 
 const Header = (props) => {
   const { user, logout } = useAuth();
-  
 
   return (
     <header className="header">
@@ -15,36 +13,36 @@ const Header = (props) => {
         <div className="header__logo">
           <img src="/img/logo.png" alt="logo" />
         </div>
-        {user?.username && (
-          <nav className="nav-bar">
-            <ul className="nav-bar__list">
-              <li className="nav-bar__item">
-                <NavLink
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                  to={"/"}
-                >
-                  головна
-                </NavLink>
-              </li>
-              <li className="nav-bar__item">
-                <NavLink
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                  to={"/posts"}
-                >
-                  пости
-                </NavLink>
-              </li>
-              <li className="nav-bar__item">
-                <NavLink
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                  to={"/tasks"}
-                >
-                  Таски
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        )}
+
+        <nav className="nav-bar">
+          <ul className="nav-bar__list">
+            <li className="nav-bar__item">
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : "")}
+                to={"/"}
+              >
+                головна
+              </NavLink>
+            </li>
+            <li className="nav-bar__item">
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : "")}
+                to={"/posts"}
+              >
+                пости
+              </NavLink>
+            </li>
+
+            <li className="nav-bar__item">
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : "")}
+                to={`/user-posts/${user?._id}`}
+              >мої пости
+                
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
 
         {user?.username ? (
           <div className="header__welcome">

@@ -44,7 +44,11 @@ const {authUser} = useAuth()
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="button" onClick={() => setShowPassword(!showPassword)}>
+        <button
+          className="toggle-visable"
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+        >
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>

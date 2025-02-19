@@ -2,13 +2,36 @@
 @import "./assets/scss/variable.scss";
 @import "./assets/scss/mixin.scss";
 
-
-
-
-.h1-title{
-  @include adaptiveValue("font-size",35 ,24 );
+.h1-title {
+  @include adaptiveValue("font-size", 35, 24);
 }
-.h2-title{
-  @include adaptiveValue("font-size",28 ,18 );
+.h2-title {
+  @include adaptiveValue("font-size", 28, 18);
+}
+.option {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  gap: 15px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  
 
+  &__delete {
+  }
+  &__edit {
+  }
+}
+.like{
+  position: absolute;
+  bottom: toRem(5);
+  right: toRem(5);
+ 
+}
+.avtor{
+  width: max-content;
+      background: $blackTeamText;
+      padding: toRem(10)
 }

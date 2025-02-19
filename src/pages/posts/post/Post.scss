@@ -7,28 +7,50 @@
   &__title {
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: toRem(20);
   }
 
   &__img {
   }
 
   &__description {
-    text-align: center;
+    
+    position: relative;
+    margin-bottom: toRem(20);
+    text-align: justify;
   }
 
   &__comments {
+  }
+  &__wraper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+    padding: toRem(30) toRem(20);
+margin-bottom: toRem(30);
+
   }
 }
 
 .comments-post {
   &__title {
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    margin-bottom: toRem(30);
+
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: toRem(10);
+    background: $bgHeader;
+    padding: toRem(30) toRem(20);
   }
   
-  button {
-
-    margin: toRem(30) auto;
+  .add{
+      margin:  toRem(30) auto;
     display: flex;
   }
 }
