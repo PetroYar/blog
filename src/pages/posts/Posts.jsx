@@ -19,7 +19,7 @@ const Posts = () => {
     posts: [],
   });
 
-  const _limit = searchParams.get("_limit") || 2;
+  const _limit = searchParams.get("_limit") || 5;
   const _start = searchParams.get("_start") || 0;
   const currentPage = useMemo(
     () => Math.floor(_start / _limit) + 1,
