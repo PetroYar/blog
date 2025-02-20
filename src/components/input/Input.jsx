@@ -8,7 +8,7 @@ const Input = ({ label, onChange, textarea,error, ...props }) => {
         <input onChange={onChange} {...props} />
       ) : (
         <textarea
-          
+          style={{ resize: "none" }}
           onChange={onChange}
           {...props}
         ></textarea>

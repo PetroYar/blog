@@ -69,7 +69,7 @@ const AddPost = () => {
           error={validateDescription}
           label="Опис"
         />
-        <Categories />
+       
         <Input type="file" name="img" label="додати фото" accept="image/*" />
 
         <Button type="submit">Відправити</Button>

@@ -10,9 +10,9 @@ const Header = (props) => {
   return (
     <header className="header">
       <div className="header__container">
-        <div className="header__logo">
+        <Link to={"/"} className="header__logo">
           <img src="/img/logo.png" alt="logo" />
-        </div>
+        </Link>
 
         <nav className="nav-bar">
           <ul className="nav-bar__list">
@@ -24,13 +24,12 @@ const Header = (props) => {
                 пости
               </NavLink>
             </li>
-
-            <li className="nav-bar__item">
+            <li>
               <NavLink
                 className={({ isActive }) => (isActive ? "active" : "")}
-                to={`/user-posts/${user?._id}`}
-              >мої пости
-                
+                to={"/create-post"}
+              >
+                Cтворити
               </NavLink>
             </li>
           </ul>
@@ -38,8 +37,9 @@ const Header = (props) => {
 
         {user?.username ? (
           <div className="header__welcome">
-            Вітаємо {user.username}
-            <Button onClick={logout}> вийти</Button>
+            <span className="header__user"> Вітаємо {user.username} </span>
+           
+            <Button className="header__login" onClick={logout}> вийти</Button>
           </div>
         ) : (
           <Link to={"/login"}>

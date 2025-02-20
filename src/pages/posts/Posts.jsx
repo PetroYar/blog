@@ -20,7 +20,6 @@ const Posts = () => {
   });
 
   const _limit = searchParams.get("_limit") || 2;
-console.log(_limit)
   const fetchPosts = async (page = 1) => {
     const data = await getData(
       `/posts?_limit=${_limit}&_start=${(page - 1) * _limit}`
@@ -81,17 +80,7 @@ console.log(_limit)
   };
   return (
     <section className="posts">
-      <nav className="nav-posts">
-        <ul className="nav-posts__list">
-          <li className="nav-posts__item">
-            <Link to={"/create-post"}>створити пост</Link>
-          </li>
-          <li className="nav-posts__item">
-            {" "}
-            фільтрувати <Categories />
-          </li>
-        </ul>
-      </nav>
+     
       {!data.posts.length > 0 ? (
         <Loading />
       ) : (
@@ -100,7 +89,7 @@ console.log(_limit)
             {data?.posts.map((post) => {
               return (
                 <li className="posts__item posts-item" key={post._id}>
-                  <div className="posts-item__category">категорія?</div>
+                 
                   <Link to={`/post/${post?._id}`}>
                     <h4 className="posts-item__title">{post?.title}</h4>
                   </Link>

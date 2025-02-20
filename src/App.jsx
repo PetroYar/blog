@@ -10,7 +10,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Tasks from "./pages/tasks/Tasks";
 import EditPost from "./pages/posts/editPost/EditPost";
-import UserPosts from "./pages/posts/userPosts/UserPosts";
+
 
 function App() {
   return (
@@ -24,7 +24,6 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="tasks" element={<Tasks />} />
         <Route path="posts/update/:postId" element={<EditPost />} />
-        <Route path="user-posts/:id" element={<UserPosts />} />
       </Routes>
     </Loyout>
   );
