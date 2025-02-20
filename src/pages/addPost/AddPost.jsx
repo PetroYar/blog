@@ -4,6 +4,8 @@ import Input from "../../components/input/Input";
 import "./AddPost.scss";
 import { postData } from "../../../libs/services";
 import { useNavigate } from "react-router-dom";
+import { BiCategory } from "react-icons/bi";
+import Categories from "../../components/categories/Categories";
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
@@ -67,7 +69,7 @@ const AddPost = () => {
           error={validateDescription}
           label="Опис"
         />
-
+        <Categories />
         <Input type="file" name="img" label="додати фото" accept="image/*" />
 
         <Button type="submit">Відправити</Button>

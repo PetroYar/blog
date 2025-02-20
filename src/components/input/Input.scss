@@ -1,20 +1,19 @@
-@use "/src/style.scss" as*;
+@use "/src/assets/scss/forvward.scss" as *;
 
-.input{
+.input {
   display: flex;
   flex-direction: column;
-  gap: toRem(10);
   position: relative;
-  label{
+  gap: toRem(10);
+  label {
     text-transform: capitalize;
   }
-  input{
+  input {
     position: relative;
     padding: toRem(5);
   }
-  
 }
-.error{
+.error {
   font-size: 16px;
   color: red;
   position: absolute;

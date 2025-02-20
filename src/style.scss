@@ -1,7 +1,8 @@
-@use "./assets/scss/variable" as *;
+@use "./assets/scss/variable.scss" as *;
 @use "./assets/scss/null.scss" as *;
-
 @use "./assets/scss/mixin.scss" as *;
+
+
 
 .h1-title {
   @include adaptiveValue("font-size", 35, 24);
@@ -23,14 +24,4 @@
   }
   &__edit {
   }
-}
-.like {
-  position: absolute;
-  bottom: toRem(5);
-  right: toRem(5);
-}
-.avtor {
-  width: max-content;
-  background: $blackTeamText;
-  padding: toRem(10);
 }

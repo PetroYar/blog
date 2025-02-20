@@ -1,26 +1,26 @@
-@use "/src/style.scss" as *;
+@use "/src/assets/scss/forvward.scss" as *;
 
-.posts {
-}
 .nav-posts {
   max-width: max-content;
   padding: toRem(30);
-  // background: $bgHeader;
+  background: $bgHeader;
   border-radius: 0 0 toRem(20) toRem(20);
-  // @include sectionMargin();
+  @include sectionMargin();
   &__list {
     display: flex;
 
-    gap: toRem(10);
+    gap: toRem(30);
     align-items: center;
   }
 
   &__item {
-    // @include adaptiveValue("font-size",22 ,18 );
     text-transform: capitalize;
     transition: color 0.5s;
+    display: flex;
+    gap: toRem(10);
+    @include adaptiveValue("font-size", 22, 18);
     &:hover {
-      // color: $hover ;
+      color: $hover;
     }
   }
 }
@@ -36,23 +36,28 @@
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-    // background: $bgHeader;
+    background: $bgHeader;
     padding: toRem(30) toRem(20);
   }
 }
 .posts-item {
   position: relative;
   &__title {
-    // @include adaptiveValue("font-size",22 ,18 );
     text-align: center;
 
-    // background: $blackTeamText;
     padding: toRem(10);
+    background: $blackTeamText;
+    @include adaptiveValue("font-size", 22, 18);
   }
 
   &__user-name {
     width: max-content;
-    // background: $blackTeamText;
     padding: toRem(10);
+    background: $blackTeamText;
+  }
+  &__category {
+    max-width: max-content;
+    background: $blackTeamText;
+    padding: toRem(3) toRem(10);
   }
 }

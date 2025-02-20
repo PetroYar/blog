@@ -9,6 +9,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Author from "../../components/author/Author";
 import Like from "../../components/like/Like";
 import Loading from "../../components/loading/Loading";
+import Categories from "../../components/categories/Categories";
 const Posts = () => {
   const { user } = useAuth();
   const [data, setData] = useState({
@@ -84,6 +85,8 @@ const Posts = () => {
           <li className="nav-posts__item">
             <Link to={"/create-post"}>створити пост</Link>
           </li>
+          <li className="nav-posts__item"> фільтрувати <Categories /></li>
+         
         </ul>
       </nav>
       {!data.posts.length > 0 ? (
@@ -94,13 +97,17 @@ const Posts = () => {
             {data?.posts.map((post) => {
               return (
                 <li className="posts__item posts-item" key={post._id}>
+                  <div className="posts-item__category">html</div>
                   <Link to={`/post/${post?._id}`}>
                     <h4 className="posts-item__title">{post?.title}</h4>
                   </Link>
 
                   <Author id={post?.user._id} userName={post.user.username} />
                   {formatDate(post.createdAt)}
-                  <Like onClick={() => toggleLikesPost(post?._id)} count={post?.likes} />
+                  <Like
+                    onClick={() => toggleLikesPost(post?._id)}
+                    count={post?.likes}
+                  />
 
                   {post?.userId === user?._id && (
                     <div className="posts-item__option option">

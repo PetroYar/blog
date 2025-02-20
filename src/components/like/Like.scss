@@ -1,4 +1,8 @@
+@use "/src/assets/scss/forvward.scss";
 
 .like {
   cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }

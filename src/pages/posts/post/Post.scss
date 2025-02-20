@@ -1,4 +1,4 @@
-@use "/src/style.scss" as *;
+@use "/src/assets/scss/forvward.scss" as *;
 
 .post {
   display: flex;
@@ -14,22 +14,19 @@
   }
 
   &__description {
-    
     position: relative;
-    margin-bottom: toRem(20);
     text-align: justify;
+    margin-bottom: toRem(20);
   }
 
-  &__comments {
-  }
+  
   &__wraper {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: toRem(20);
     padding: toRem(30) toRem(20);
-margin-bottom: toRem(30);
-
+    margin-bottom: toRem(30);
   }
 }
 
@@ -38,19 +35,24 @@ margin-bottom: toRem(30);
     text-align: center;
     text-transform: capitalize;
     margin-bottom: toRem(30);
-
+  }
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
   }
   &__item {
+
     position: relative;
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-  // background: $bgHeader;
     padding: toRem(30) toRem(20);
+    background: $bgHeader;
   }
-  
-  .add{
-      margin:  toRem(30) auto;
+
+  .add {
     display: flex;
+    margin: toRem(30) auto;
   }
 }

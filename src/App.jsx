@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Loyout from "./components/loyout/Loyout";
 import "./style.scss";
+
 import Home from "./pages/home/Home";
 import Posts from "./pages/posts/Posts";
 import Post from "./pages/posts/post/Post";

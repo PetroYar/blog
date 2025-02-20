@@ -1,6 +1,6 @@
-@use "/src/style.scss" as *;
+@use "/src/assets/scss/forvward.scss" as *;
 
 .loyout {
-  // background: $bgMain;
   min-height: 100vh;
+  background: $bgMain;
 }
