@@ -56,20 +56,22 @@ const AddPost = () => {
           type="text"
           label="Заголовок"
           error={validateTitle}
+          autoComplete="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <Input
           value={description}
           type="text"
+          autoComplete="text"
           onChange={(e) => setDescription(e.target.value)}
           rows="15"
           textarea
           error={validateDescription}
           label="Опис"
         />
-       
-        <Input type="file" name="img" label="додати фото" accept="image/*" />
+
+        {/* <Input type="file" name="img" label="додати фото" accept="image/*" /> */}
 
         <Button type="submit">Відправити</Button>
       </form>

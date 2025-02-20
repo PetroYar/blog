@@ -174,6 +174,7 @@ const Post = () => {
                           <Like
                             onClick={() => toggleLikesComment(comment?._id)}
                             count={comment.likes}
+                            
                           />
                         </button>
                         {comment?.user?._id === user?._id && (
@@ -182,7 +183,7 @@ const Post = () => {
                               className="edit"
                               // to={`/posts/update/${post._id}`}
                             >
-                              <FaEdit />
+                              <FaEdit  />
                             </Link>
                             <button
                               onClick={() => handleDeleteComment(comment._id)}
