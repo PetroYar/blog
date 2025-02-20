@@ -97,7 +97,7 @@ const Posts = () => {
             {data?.posts.map((post) => {
               return (
                 <li className="posts__item posts-item" key={post._id}>
-                  <div className="posts-item__category">html</div>
+                  <div className="posts-item__category">категорія?</div>
                   <Link to={`/post/${post?._id}`}>
                     <h4 className="posts-item__title">{post?.title}</h4>
                   </Link>
