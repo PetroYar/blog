@@ -36,7 +36,7 @@ const AddPost = () => {
 
       postData("/posts", newPost)
         .then((res) => {
-          navigate("/posts");
+          navigate("/");
         })
         .catch((error) => {
           if (error.status === 401) {
