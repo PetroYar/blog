@@ -4,8 +4,7 @@ import Input from "../../components/input/Input";
 import "./AddPost.scss";
 import { postData } from "../../../libs/services";
 import { useNavigate } from "react-router-dom";
-import { BiCategory } from "react-icons/bi";
-import Categories from "../../components/categories/Categories";
+
 
 const AddPost = () => {
   const [title, setTitle] = useState("");

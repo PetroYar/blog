@@ -25,6 +25,8 @@
   }
 }
 .posts {
+  @include adaptiveValue("padding-bottom",70 ,30 );
+
   &__list {
     display: flex;
     flex-direction: column;

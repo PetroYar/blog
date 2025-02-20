@@ -21,6 +21,10 @@ const navigate = useNavigate()
     if (password < 6) {
       return setErrorsMsg("пароль не менше 6 символів");
     }
+    setErrorsMsg('')
+      if (password !== confirmPassword) {
+        return setErrorsMsg("паролі не співпадають");
+      }
     try {
       const user = {
         username,
@@ -63,7 +67,7 @@ const navigate = useNavigate()
           value={password}
           required
         />
-        {errorsMsg}
+        <span className="error">{errorsMsg}</span>
         <button
           className="toggle-visable"
           type="button"

@@ -25,12 +25,10 @@ const Post = () => {
     comments: [],
   });
   useEffect(() => {
-    
     const getPost = async () => {
       try {
         const data = await getData(`/posts/${postId}`);
         setData(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -39,7 +37,6 @@ const Post = () => {
   }, []);
 
   const addComment = async (postId) => {
-
     if (description) {
       const newComment = {
         description,
@@ -47,12 +44,12 @@ const Post = () => {
       };
       try {
         const addedComment = await postData(`/comments`, newComment);
-        console.log(addedComment)
+
         setData((prevData) => ({
           ...prevData,
           comments: [...prevData.comments, addedComment],
         }));
-        console.log(addedComment);
+       
         setDescription("");
       } catch (error) {
         if (error.status === 401) {
@@ -201,7 +198,7 @@ const Post = () => {
                 </ul>
               </>
             ) : (
-              <Loading />
+              <span>Коментарів ще немає</span>
             )}
 
             <Input

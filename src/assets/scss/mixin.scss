@@ -1,7 +1,6 @@
 @use "sass:math";
 @use "./variable.scss" as *;
 
-
 $containerWidth: $maxWidthContainer + $containerPadding;
 @function em($px, $current: 16) {
   $result: math.div($px, $current) + em;
@@ -100,9 +99,7 @@ $mobileSmall: em(540);
 @mixin sectionMargin() {
   @include adaptiveValue("margin-bottom", 70, 30);
 }
-@mixin paddingBottom() {
-  @include adaptiveValue("padding-bottom", 70, 30);
-}
+
 
 @mixin flexCenter($row: false) {
   display: flex;

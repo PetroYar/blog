@@ -1,5 +1,5 @@
 import "./Posts.scss";
-import { Link, useRoutes } from "react-router-dom";
+import { Link, useNavigate, useRoutes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteData, getData, updateData } from "../../../libs/services";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -9,17 +9,22 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Author from "../../components/author/Author";
 import Like from "../../components/like/Like";
 import Loading from "../../components/loading/Loading";
-import Categories from "../../components/categories/Categories";
 import { useSearchParams } from "react-router-dom";
+import { useMemo } from "react";
 const Posts = () => {
   const { user } = useAuth();
   const [searchParams] = useSearchParams();
-
+  const navigate = useNavigate();
   const [data, setData] = useState({
     posts: [],
   });
 
   const _limit = searchParams.get("_limit") || 2;
+  const _start = searchParams.get("_start") || 0;
+  const currentPage = useMemo(
+    () => Math.floor(_start / _limit) + 1,
+    [_start, _limit]
+  );
   const fetchPosts = async (page = 1) => {
     const data = await getData(
       `/posts?_limit=${_limit}&_start=${(page - 1) * _limit}`
@@ -29,18 +34,20 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    fetchPosts(data.currentPage);
-  }, [data.currentPage]);
+    fetchPosts(currentPage);
+  }, [currentPage]);
 
   const handlePrevPage = () => {
     if (data.prevPage) {
-      fetchPosts(data.prevPage);
+      const newStart = Number(_start) - Number(_limit);
+      navigate(`/?_limit=${_limit}&_start=${newStart}`);
     }
   };
 
   const handleNextPage = () => {
     if (data.nextPage) {
-      fetchPosts(data.nextPage);
+      const newStart = Number(_start) + Number(_limit);
+      navigate(`/?_limit=${_limit}&_start=${newStart}`);
     }
   };
 
@@ -80,7 +87,6 @@ const Posts = () => {
   };
   return (
     <section className="posts">
-     
       {!data.posts.length > 0 ? (
         <Loading />
       ) : (
@@ -89,7 +95,6 @@ const Posts = () => {
             {data?.posts.map((post) => {
               return (
                 <li className="posts__item posts-item" key={post._id}>
-                 
                   <Link to={`/post/${post?._id}`}>
                     <h4 className="posts-item__title">{post?.title}</h4>
                   </Link>
