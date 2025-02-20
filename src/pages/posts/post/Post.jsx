@@ -38,7 +38,7 @@ const Post = () => {
   }, []);
 
   const addComment = async (postId) => {
-    console.log(data);
+
     if (description) {
       const newComment = {
         description,

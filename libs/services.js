@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_URL = "https://new-cet-server.vercel.app/api";
-// const API_URL = "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_URL_API;
+
 export const getData = async (params, token, queryParams = {}) => {
   try {
     const response = await axios.get(API_URL + params, {
