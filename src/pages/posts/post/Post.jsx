@@ -138,7 +138,7 @@ const Post = () => {
             <Like
               onClick={() => toggleLikesPost(data?._id)}
               style={{
-                fill: data?.likesBy?.includes(user._id) ? "red" : "black",
+                fill: data?.likesBy?.includes(user?._id) ? "red" : "black",
               }}
               count={data?.likes}
             />
