@@ -42,14 +42,14 @@ export const updateData = async (params, body) => {
     return response.data;
   } catch (error) {
     if (error.response) {
-      // Сервер відповів з помилкою
+    
       console.error("Server Error:", error.response.data);
       console.error("Status Code:", error.response.status);
     } else if (error.request) {
-      // Запит був зроблений, але немає відповіді
+      
       console.error("No response received:", error.request);
     } else {
-      // Інші помилки
+    
       console.error("Error:", error.message);
     }
     throw error;

@@ -1,5 +1,5 @@
 import "./Posts.scss";
-import { Link } from "react-router-dom";
+import { Link, useRoutes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteData, getData, updateData } from "../../../libs/services";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -10,14 +10,17 @@ import Author from "../../components/author/Author";
 import Like from "../../components/like/Like";
 import Loading from "../../components/loading/Loading";
 import Categories from "../../components/categories/Categories";
+import { useSearchParams } from "react-router-dom";
 const Posts = () => {
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
+
   const [data, setData] = useState({
     posts: [],
   });
 
-  const _limit = 2;
-
+  const _limit = searchParams.get("_limit") || 2;
+console.log(_limit)
   const fetchPosts = async (page = 1) => {
     const data = await getData(
       `/posts?_limit=${_limit}&_start=${(page - 1) * _limit}`
@@ -33,7 +36,6 @@ const Posts = () => {
   const handlePrevPage = () => {
     if (data.prevPage) {
       fetchPosts(data.prevPage);
-
     }
   };
 
@@ -59,7 +61,6 @@ const Posts = () => {
     try {
       updateData(`/posts/like/${id}`)
         .then((res) => {
-        
           setData((prevData) => ({
             ...prevData,
             posts: prevData.posts.map((post) =>
@@ -85,8 +86,10 @@ const Posts = () => {
           <li className="nav-posts__item">
             <Link to={"/create-post"}>створити пост</Link>
           </li>
-          <li className="nav-posts__item"> фільтрувати <Categories /></li>
-         
+          <li className="nav-posts__item">
+            {" "}
+            фільтрувати <Categories />
+          </li>
         </ul>
       </nav>
       {!data.posts.length > 0 ? (

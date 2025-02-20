@@ -17,7 +17,7 @@ const EditPost = (props) => {
     const getPost = async () => {
       try {
         const data = await getData(`/posts/post/${postId}`);
-        console.log(data);
+       
         setPost({ title: data.title, description: data.description });
       } catch (error) {
         console.error(error);
@@ -44,8 +44,11 @@ const EditPost = (props) => {
       return;
     }
     try {
-      updateData(`/posts/update/${postId}`, post);
-      navigate(`/post/${postId}`);
+      updateData(`/posts/update/${postId}`, post).then(req=>{
+        navigate(`/post/${postId}`);
+        console.log(req)
+      });
+      
     } catch (error) {
       console.error(error);
     }

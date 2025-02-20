@@ -25,6 +25,7 @@ const Post = () => {
     comments: [],
   });
   useEffect(() => {
+    
     const getPost = async () => {
       try {
         const data = await getData(`/posts/${postId}`);
@@ -46,6 +47,7 @@ const Post = () => {
       };
       try {
         const addedComment = await postData(`/comments`, newComment);
+        console.log(addedComment)
         setData((prevData) => ({
           ...prevData,
           comments: [...prevData.comments, addedComment],

@@ -21,14 +21,6 @@ const Header = (props) => {
                 className={({ isActive }) => (isActive ? "active" : "")}
                 to={"/"}
               >
-                головна
-              </NavLink>
-            </li>
-            <li className="nav-bar__item">
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : "")}
-                to={"/posts"}
-              >
                 пости
               </NavLink>
             </li>
