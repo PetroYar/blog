@@ -104,6 +104,11 @@ const Posts = () => {
                   <Like
                     onClick={() => toggleLikesPost(post?._id)}
                     count={post?.likes}
+                    style={{
+                      fill: post?.likesBy?.includes(user._id)
+                        ? "red"
+                        : "black",
+                    }}
                   />
 
                   {post?.userId === user?._id && (
