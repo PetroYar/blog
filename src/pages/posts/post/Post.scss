@@ -16,7 +16,7 @@
 
   &__description {
     position: relative;
-    text-align: justify;
+    text-align: left;
     margin-bottom: toRem(20);
     white-space: pre-wrap;
   }
@@ -29,7 +29,7 @@
     padding: toRem(30) toRem(20);
     margin-bottom: toRem(30);
     background: $bgHeader;
-    max-height: 100vh;
+    min-height: 100dvh;
     overflow-y: auto;
 
   }
