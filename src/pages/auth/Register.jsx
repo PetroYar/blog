@@ -18,10 +18,9 @@ const navigate = useNavigate()
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if (password < 6) {
-      return setErrorsMsg("пароль не менше 6 символів");
+    if (password.length < 6) {
+      return setErrorsMsg("пароль повинен бути не менше 6 символів");
     }
-    setErrorsMsg('')
       if (password !== confirmPassword) {
         return setErrorsMsg("паролі не співпадають");
       }
@@ -36,6 +35,7 @@ const navigate = useNavigate()
           navigate('/login')
         })
         .catch((error) => {
+setErrorsMsg("Помилка реєстрації. Спробуйте ще раз.");
           console.log(error);
         });
     } catch (error) {}

@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { authUser } = useAuth();
+  const { authUser,errorMsg } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -44,6 +44,7 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errorMsg&& <span className="error">{errorMsg}</span>}
         <button
           className="toggle-visable"
           type="button"

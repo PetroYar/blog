@@ -29,7 +29,7 @@
     padding: toRem(30) toRem(20);
     margin-bottom: toRem(30);
     background: $bgHeader;
-    min-height: 100dvh;
+    max-height: 100vh;
     overflow-y: auto;
 
   }

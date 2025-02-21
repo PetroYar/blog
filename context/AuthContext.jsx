@@ -6,6 +6,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [errorMsg,setErrorsMsg] = useState('')
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,11 +29,15 @@ export const AuthProvider = ({ children }) => {
   };
   
   const authUser = async (user) => {
-    const data = await postData("/auth/login", user);
-    console.log(data);
-    localStorage.setItem("token", data.token);
-    getUser(data.token);
+    const data = await postData("/auth/login", user).then(req=>{
+       localStorage.setItem("token", req.token);
+    getUser(req.token);
     navigate("/");
+    setErrorsMsg('')
+    }).catch(error=>{
+      setErrorsMsg('Неправельний логін або пароль')
+    })
+   
     return data;
   };
 
@@ -47,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     setUser,
     authUser,
     logout,
+    errorMsg
   };
   return <AuthContext.Provider value={cxv}>{children}</AuthContext.Provider>;
 };
