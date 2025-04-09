@@ -10,16 +10,26 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Tasks from "./pages/tasks/Tasks";
 import EditPost from "./pages/posts/editPost/EditPost";
+import { useAuth } from "../hooks/useAuth";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 function App() {
+  
   return (
     <Loyout>
       <Routes>
-        
         <Route path="/" element={<Posts />} />
         <Route path="post/:postId" element={<Post />} />
-        <Route path="create-post" element={<AddPost />} />
+        
+        <Route
+          path="create-post"
+          element={
+            <ProtectedRoute>
+              <AddPost />
+            </ProtectedRoute>
+          }
+        />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="tasks" element={<Tasks />} />
